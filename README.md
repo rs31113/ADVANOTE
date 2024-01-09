@@ -12,7 +12,7 @@ Go to you work path and use this commands in console:
 ### Download Project Files
 
 ```commandline
-git clone https://gitlab.crja72.ru/django_2023/projects/team11.git
+git clone https://github.com/rs31113/Advanote.git
 ```
 
 ### Venv Installation And Activation
