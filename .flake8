@@ -1,0 +1,5 @@
+[flake8]
+import-order-style = google
+inline-quotes = "
+plugins = pep8-naming
+application-import-names = advanote, authorization, core, notes, projects, tag, tasks, users
