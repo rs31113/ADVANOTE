@@ -43,6 +43,8 @@ htmlcov/
 .coverage
 .coverage.*
 .cache
+cache
+cache/
 nosetests.xml
 coverage.xml
 *.cover
@@ -121,12 +123,14 @@ celerybeat.pid
 
 # Environments
 .env
+lyceum/.env
 .venv
 env/
 venv/
 ENV/
 env.bak/
 venv.bak/
+.DS_Store
 
 # Spyder project settings
 .spyderproject
@@ -151,7 +155,11 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+.vscode/
+.idea/
 
+send_mail/
+tests_media/
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
 #  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
