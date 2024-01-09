@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль</title>
+    <link href="{% static 'css/tasks-styles.css' %}" rel="stylesheet">
+</head>
+<body>
+<div class="overlay" id="overlay"></div>
+<div class="container">
+    <form method="post" action="{% url 'authorization:profile' %}">
+    {% csrf_token %}
+        <h4 style="text-align: center;">Персональные данные</h4>
+    <table class="table table-th-block" style="margin-top: 20px;">
+        <tbody>
+        <tr>
+            <td class="form-group active">Логин:</td>
+            <td>{{ user_form.username }}</td>
+        </tr>
+        <tr>
+            <td class="active">Имя:</td>
+            <td>{{ user_form.first_name }}</td>
+        </tr>
+        <tr>
+            <td class="active">Фамилия:</td>
+            <td>{{ user_form.last_name }}</td>
+        </tr>
+        <tr>
+            <td class="active">Дата рождения:</td>
+            <td>{{ profile_form.birthday }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <h4 style="text-align: center; margin-top: 40px;">Безопасность</h4>
+    <table class="table table-th-block" style="margin-top: 20px;">
+        <tbody>
+        <tr>
+            <td class="active">{{ change_password_form.old_password }}</td>
+        </tr>
+        <tr>
+            <td class="active">{{ change_password_form.new_password1 }}</td>
+        </tr>
+        <tr>
+            <td class="active">{{ change_password_form.new_password2 }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block button">Сохранить</button>
+    </div>
+    <input type="hidden" name="next" value="{{ next }}">
+    </form>
+    <div class="form-group">
+        <a href="{% url 'authorization:logout' %}" class="btn btn-primary btn-block button">Выйти из аккаунта</a>
+    </div>
+</div>
+    <script src="{% static 'js/notes.js' %}"></script>
+</body>
+</html>
+{% endblock %}

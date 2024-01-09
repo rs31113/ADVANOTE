@@ -1,0 +1,6 @@
+{% autoescape off %}
+Привет {{ name }},
+
+Кто - то вошёл в ваш аккаунт, если это были не вы, перейдите по ссылке и смените пароль:
+{{ protocol }}://{{ domain }}{% url 'authorization:password_confirm' uidb64=uid token=token %}
+{% endautoescape %}

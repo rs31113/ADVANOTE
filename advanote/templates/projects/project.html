@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<div class="container">
+    <script src="{% static 'js/tasks.js' %}"></script>
+    <link href="/static/css/tasks-styles.css" rel="stylesheet">
+    <div class="overlay" id="overlay"></div>
+    <h1>{{ project.name }}</h1>
+    <table class="table table-th-block">
+        <tbody>
+        <tr>
+            <td class="active">Создатель проекта:</td>
+            <td>{{ project.owner.username }}</td>
+        </tr>
+        <tr>
+            <td class="active">Описание проекта:</td>
+            <td>
+                <div class="scroll-block">
+                    {{ project.description }}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="active">Задачи проекта:</td>
+            <td>
+                <div class="scroll-block">
+                    {% for task in project.task.all %}
+                    <div class="task" data-task-id="{{ task.id }}">{{ task.title }}</div>
+                    {% endfor %}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="active">Заметки проекта:</td>
+            <td>
+                <div class="scroll-block">
+                    {% for note in project.note.all %}
+                    <p><a href="">{{ note.title }}</a></p>
+                    {% endfor %}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="active">Участники проекта:</td>
+            <td>
+                <div class="scroll-block">
+                    {% for member in project.members.all %}
+                    <p>{{ member.username }}</p>
+                    {% endfor %}
+                </div>
+            </td>
+        </tr>
+        {% if project.invite_link and project.owner == user %}
+        <tr>
+            <td class="active">Пригласительная ссылка:</td>
+            <td>{{ request.scheme }}://{{ request.META.HTTP_HOST }}{% url 'projects:invite_link' pk=project.id invite_code=project.invite_link %}</td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+    {% if project.owner == user %}
+    <a href="{% url 'projects:create_invite' project.id %}" class="custom-btn btn-16">{% if project.invite_link %} Новая пригласительная ссылка {% else %} Создать пригласительную ссылку {% endif %}</a>
+    {% endif %}
+</div>
+{% endblock %}

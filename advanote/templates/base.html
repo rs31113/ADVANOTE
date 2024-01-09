@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Advanote{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{% static 'img/logo.png' %}">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/authorization.css' %}" rel="stylesheet">
+    <link href="{% static 'css/menu-styles.css' %}" rel="stylesheet">
+    <link href="{% static 'css/notes-styles.css' %}" rel="stylesheet">
+    <link href="{% static 'css/notes.css' %}" rel="stylesheet">
+</head>
+
+<body>
+<div class="menu">
+        <div class="button-container">
+            <button class="profile-button icon-button {% if request.path == '/profile/' %}active{% endif %}">
+                <a href="{% url 'authorization:profile' %}">
+                    <img src="{% static 'img/profile.png' %}" alt="Иконка"> {{ user.username }}
+                </a>
+            </button>
+            <button class="icon-button {% if request.path == '/today/' %}active{% endif %}">
+                <a href="{% url 'today:today' %}">
+                    <img src="{% static 'img/today.png' %}" alt="Иконка"> Сегодня
+                    <span class="task-count">{{ tasks_count }}</span>
+                </a>
+            </button>
+            <button class="icon-button {% if request.path == '/notes/' %}active{% endif %}">
+                <a href="{% url 'notes:notes' %}">
+                    <img src="{% static 'img/notes.png' %}" alt="Иконка"> Заметки
+                </a>
+                <img src="{% static 'img/plus.png' %}" class="add-note-btn" alt="Добавить заметку">
+                <img src="{% static 'img/right-arrow.png' %}" id="rightArrowIcon" class="arrow-icon" alt="Стрелка" onclick="toggleNotesDropdown()">
+                <img src="{% static 'img/down-arrow.png' %}" id="downArrowIcon" class="arrow-icon hidden" alt="Стрелка" onclick="toggleNotesDropdown()">
+            </button>
+            <div class="dropdown-content" id="notesDropdown" style="display: none;"></div>
+            <button class="icon-button {% if request.path == '/projects/' %}active{% endif %}">
+                <a href="{% url 'projects:page' %}">
+                    <img src="{% static 'img/projects.png' %}" alt="Иконка"> Проекты
+                </a>
+            </button>
+        </div>
+</div>
+<div class="content" style="margin-left: 200px;">
+    {% block content %}
+    {% endblock %}
+</div>
+<script src="{% static 'js/notes.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

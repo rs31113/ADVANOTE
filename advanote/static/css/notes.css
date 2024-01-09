@@ -1,0 +1,53 @@
+#note-form {
+    height: 100%;
+}
+
+.container {
+    max-width: 1200px;
+    max-height: 800px;
+    overflow: auto;
+    margin: 0 auto;
+    padding: 100px;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100%;
+    width: 100%;
+    margin-top: 10px;
+    font-family: Calibri, sans-serif;
+}
+
+.form-group input[type="text"] {
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Calibri, sans-serif;
+    color: #333;
+}
+
+
+.delete-note-icon {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    transform: translateX(-50%);
+    cursor: pointer;
+    right: -500px;
+}
+
+
+header {
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    display: flex;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    position: relative;
+}

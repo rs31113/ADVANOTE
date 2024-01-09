@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Сегодня</title>
+    <link href="{% static 'css/tasks-styles.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="tasks">
+        <h1 style="font-family: Calibri, sans-serif;">Сегодня</h1>
+        {% if tasks_count == 0 %}
+            <p style="padding: 5px; color: #AEAEAE; font-family: Calibri, sans-serif;">Нет задач на сегодня.</p>
+        {% else %}
+        <p style="padding: 5px; color: #AEAEAE;">Количество задач на сегодня: {{ tasks_count }}</p>
+        {% endif %}
+        <button class="add-task-btn">
+            <img src="{% static 'img/add.png' %}" alt="Иконка"> Добавить задачу
+        </button>
+        <div class="overlay" id="overlay"></div>
+        <div class="task-container" style="height: 300px; overflow-y: scroll;">
+        {% for task, status in tasks_with_status %}
+            <div class="task" data-task-id="{{ task.id }}">
+                <span class="circle {% if status %}checked{% endif %}" data-task-id="{{ task.id }}" style="background-image: url('{% static 'img/tick.png' %}')"></span>
+                <p class="{% if status %}checked-text{% endif %}">{{ task.title }}</p>
+                <img src="{% static 'img/delete.png' %}" class="delete-icon" alt="Удалить">
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    <script src="{% static 'js/tasks.js' %}"></script>
+</body>
+</html>
+{% endblock %}

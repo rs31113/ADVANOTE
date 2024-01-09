@@ -1,0 +1,28 @@
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Advanote{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{% static 'img/logo.png' %}">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/authorization.css' %}" rel="stylesheet">
+</head>
+<body>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% with request.resolver_match.view_name as view_name %}
+<div class="background-image" style="background-image: url('{% static "img/background.jpeg" %}');">
+    <div class="container">
+        <h3 class="container-done">
+            {% if view_name  == 'authorization:password_done' %} Мы отправили инструкцию по восстановлению пароля на вашу почту. Если письма нет, то проверьте спам. {% endif %}
+            {% if view_name  == 'authorization:password_complete' %} Пароль успешно изменен. {% endif %}
+            {% if view_name  == 'authorization:logout' %} Вы вышли из аккаунта! {% endif %}
+        </h3>
+    </div>
+</body>
+{% endwith %}

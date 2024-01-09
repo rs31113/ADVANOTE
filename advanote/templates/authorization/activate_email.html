@@ -1,0 +1,7 @@
+{% autoescape off %}
+Привет {{ name }},
+
+Пожалуйста, нажмите на ссылку, чтобы подтвердить почту:
+
+{{ protocol }}://{{ domain }}{% url 'authorization:email_confirm' uidb64=uid token=token %}
+{% endautoescape %}
