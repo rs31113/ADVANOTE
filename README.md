@@ -2,12 +2,12 @@
 
 ## About The Project
 
-It's app for writing task, notes, projects when you team can work!
+This project aims to develop a collaborative web application for advanced note-taking, facilitating seamless sharing and editing of notes among teams. The application is designed to empower users to create, edit, and collaboratively utilize notes, fostering team efficiency, productivity, and streamlined information exchange.
 
 ## Getting Started
 
-For work the project need download project files.
-Go to you work path and use this commands in console:
+To start working on the project, you'll need to download the project files. 
+Navigate to your working directory and execute the following commands in the console.
 
 ### Download Project Files
 
@@ -17,13 +17,13 @@ git clone https://github.com/rs31113/Advanote.git
 
 ### Venv Installation And Activation
 
-For more comfortable work in your project create venv:
+To enhance your project workflow, create a virtual environment (venv).
 
 ```commandline
 python -m venv venv
 ```
 
-For activation venv use this command:
+To activate your venv use this command.
 
 ```commandline
 For windows:
@@ -34,7 +34,7 @@ source venv/bin/activate
 
 ### Requirements
 
-For correctly work project need install requirements:
+For the project to function properly, it's necessary to install the required dependencies.
 
 1. Install prod requirements:
     ```commandline 
@@ -48,14 +48,14 @@ For correctly work project need install requirements:
    ```commandline 
     pip install -r requirements/dev.txt
    ```
-If you want download all requirements in one command just use:
+You can install all requirements using one command.
 ```commandline
 pip install -r requirements/requirements.txt
 ```
 
 ## Start dev-mode
 
-For run dev-mode use this command:
+To run dev-mode use this command.
 
 ```commandline
 cd advanote
@@ -63,7 +63,7 @@ cd advanote
 python manage.py runserver
 ```
 
-If everything worked correctly, you will receive a message like this
+If everything worked correctly, you will receive a message like this.
 
 ```commandline
 Starting development server at http://127.0.0.1:8000/
@@ -71,26 +71,27 @@ Starting development server at http://127.0.0.1:8000/
 
 ## Test run
 
-If you want check project work correctly run tests.
-For run tests use this command:
+To ensure the project operates correctly, run tests. 
+Execute the following command to run the tests.
 
 ```commandline
 python advanote/manage.py test
 ```
 
 ## Load Fixtures
-For loading fixtures data use this command:
+To load fixture data, utilize this command.
 ```commandline
 python manage.py loaddata fixtures/data.json
 ```
 ## Dump Fixtures
-For dumping data fixtures use this command:
+To export fixture data, employ this command.
 ```commandline
 python -Xutf8 manage.py dumpdata catalog -o fixtures/data.json
 ```
 
 ## Migrations
-When making changes to the database schema, you need to create and apply migrations. Use the following commands:
+To update the database structure, it's essential to generate and implement migrations. 
+Employ the commands below.
 
 ```commandline
 python manage.py makemigrations
