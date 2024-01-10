@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Lint with flake8
+        run: flake8 . --verbose
+
+      - name: Check code formatting with black
+        run: black . --check --verbose --diff
+
+  unit_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
+      
+      - name: Install dependencies
+        run: |
+          pip install -r requirements/requirements.txt
+          sort-requirements requirements/test.txt
+          sort-requirements requirements/prod.txt
+          sort-requirements requirements/dev.txt
+      
+      - name: Run unit tests
+        run: |
+          cd advanote
+          python manage.py test
