@@ -100,4 +100,4 @@ python manage.py migrate
 
 ## Contacts
 
-Ruslan - [Telegram](https://t.me/rs31113)
+Ruslan Shafikov - [Telegram](https://t.me/rs31113)
