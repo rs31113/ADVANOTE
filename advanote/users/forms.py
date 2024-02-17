@@ -76,7 +76,7 @@ class ProfileChangeForm(django.forms.ModelForm):
         fields = (users.models.Profile.birthday.field.name,)
         widgets = {
             users.models.Profile.birthday.field.name: django.forms.DateInput(
-                attrs={"type": "date", "class": "form-control-profile"},
+                attrs={"type": "date", "class": "form-control"},
             ),
         }
 
@@ -86,8 +86,24 @@ class UserChangeForm(django.contrib.auth.forms.UserChangeForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        for field in self.visible_fields():
-            field.field.widget.attrs["class"] = "form-control-profile"
+        self.fields["username"].widget.attrs.update(
+            {
+                "class": "form-control",
+                "placeholder": "Логин",
+            },
+        )
+        self.fields["first_name"].widget.attrs.update(
+            {
+                "class": "form-control",
+                "placeholder": "Имя",
+            },
+        )
+        self.fields["last_name"].widget.attrs.update(
+            {
+                "class": "form-control",
+                "placeholder": "Фамилия",
+            },
+        )
 
     class Meta(django.contrib.auth.forms.UserChangeForm.Meta):
         model = django.contrib.auth.models.User
