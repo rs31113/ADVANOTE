@@ -88,11 +88,11 @@
     outline: none;
 }
 
-
 .task-container {
     margin-top: 30px;
     padding: 10px;
     float: right;
+    height: 100%;
     margin-right: 10px;
     width: calc(100% - 20px);
 }
@@ -144,16 +144,33 @@
     transition: opacity 0.3s ease-in-out;
 }
 
+.edit-icon {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    transform: translateY(-80%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
 .task:hover .delete-icon {
+    opacity: 1;
+}
+
+.task:hover .edit-icon {
     opacity: 1;
 }
 
 .add-task-btn {
     transition: color 0.3s ease-in-out;
+    color: black;
 }
 
 .add-task-btn:hover {
     color: #7DACF8;
+    text-decoration: none;
 }
 
 .add-task-btn:focus {

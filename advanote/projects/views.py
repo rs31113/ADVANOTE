@@ -2,7 +2,7 @@ import uuid
 
 import django.contrib.auth.mixins
 import django.http
-import django.shortcuts
+from django.shortcuts import get_object_or_404, redirect, render
 import django.urls
 import django.views.generic
 
@@ -10,20 +10,20 @@ import projects.forms
 import projects.models
 
 
-class CreateProject(
+class AddProject(
     django.contrib.auth.mixins.LoginRequiredMixin,
     django.views.generic.FormView,
 ):
     form_class = projects.forms.ProjectCreateForm
     success_url = django.urls.reverse_lazy("projects:page")
-    template_name = "projects/create.html"
+    template_name = "projects/add_project.html"
 
     def get(self, request, *args, **kwargs):
         form = self.form_class(request)
         context = {
             "form": form,
         }
-        return django.shortcuts.render(request, self.template_name, context)
+        return render(request, self.template_name, context)
 
     def get_form(self, form_class=None, **kwargs):
         if form_class is None:
@@ -49,12 +49,12 @@ class CreateProject(
         return super().form_valid(form)
 
 
-class ProjectsListPage(
+class ProjectsList(
     django.contrib.auth.mixins.LoginRequiredMixin,
     django.views.generic.ListView,
 ):
     context_object_name = "projects"
-    template_name = "projects/projects_page.html"
+    template_name = "projects/projects.html"
 
     def get_queryset(self):
         return projects.models.Project.objects.get_all_user_projects(
@@ -62,12 +62,12 @@ class ProjectsListPage(
         )
 
 
-class ProjectEditPage(
+class EditProject(
     django.contrib.auth.mixins.LoginRequiredMixin,
     django.contrib.auth.mixins.UserPassesTestMixin,
     django.views.generic.View,
 ):
-    template_name = "projects/project_edite.html"
+    template_name = "projects/edit_project.html"
 
     def test_func(self):
         project = projects.models.Project.objects.get_all_members(
@@ -99,7 +99,7 @@ class ProjectEditPage(
             "form": form,
             "project": project,
         }
-        return django.shortcuts.render(request, self.template_name, context)
+        return render(request, self.template_name, context)
 
     def get(self, request, *args, **kwargs):
         project = projects.models.Project.objects.get(id=kwargs["project_id"])
@@ -108,16 +108,29 @@ class ProjectEditPage(
             "form": form,
             "project": project,
         }
-        return django.shortcuts.render(request, self.template_name, context)
+        return render(request, self.template_name, context)
 
 
-class ProjectDetail(
+class DeleteProject(
+    django.contrib.auth.mixins.LoginRequiredMixin,
+    django.views.View,
+):
+    def delete(self, request, project_id):
+        project = get_object_or_404(projects.models.Project, id=project_id)
+        project.delete()
+        return django.http.JsonResponse({"message": "Project deleted successfully"})
+
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+
+class ProjectDetails(
     django.contrib.auth.mixins.LoginRequiredMixin,
     django.contrib.auth.mixins.UserPassesTestMixin,
     django.views.generic.DetailView,
 ):
     model = projects.models.Project
-    template_name = "projects/project.html"
+    template_name = "projects/project_details.html"
 
     def test_func(self):
         project = projects.models.Project.objects.get_all_members(
@@ -138,7 +151,7 @@ class AcceptInvite(
     django.views.generic.View,
 ):
     def get(self, request, *args, **kwargs):
-        project = django.shortcuts.get_object_or_404(
+        project = get_object_or_404(
             projects.models.Project,
             pk=kwargs["pk"],
         )
@@ -150,7 +163,7 @@ class AcceptInvite(
             ),
         ):
             project.members.add(request.user)
-            return django.shortcuts.redirect(
+            return redirect(
                 django.urls.reverse(
                     "projects:project_detail",
                     kwargs={"pk": kwargs["pk"]},
@@ -166,14 +179,14 @@ class CreateInviteLink(
     django.views.generic.View,
 ):
     def get(self, request, *args, **kwargs):
-        project = django.shortcuts.get_object_or_404(
+        project = get_object_or_404(
             projects.models.Project,
             pk=kwargs["pk"],
         )
         if request.user == project.owner:
             project.invite_link = uuid.uuid4()
             project.save()
-        return django.shortcuts.redirect(
+        return redirect(
             django.urls.reverse(
                 "projects:project_detail",
                 kwargs={"pk": kwargs["pk"]},

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Сегодня</title>
+    <link href="{% static 'css/tasks-styles.css' %}" rel="stylesheet">
+</head>
+<div class="tasks">
+    <h1>Проекты</h1>
+    {% if projects_count == 0 %}
+        <p style="padding: 5px; color: #AEAEAE;">Нет проектов.</p>
+    {% else %}
+    <p style="padding: 5px; color: #AEAEAE;">Количество проектов: {{ projects_count }}</p>
+    {% endif %}
+    <a class="add-task-btn" href="{% url 'projects:create' %}">
+        <img src="{% static 'img/add.png' %}" alt="Иконка"> Добавить проект
+    </a>
+    <div class="overlay" id="overlay"></div>
+        <div class="task-container">
+        {% for project in projects %}
+            <div class="task" data-project-id="{{ project.id }}">
+                <p>{{ project.name }}</p>
+                <img src="{% static 'img/delete.png' %}" class="delete-icon" alt="Удалить">
+                <img src="{% static 'img/edit.png' %}" class="edit-icon" alt="Редактировать">
+            </div>
+        {% endfor %}
+        </div>
+    <script src="{% static 'js/projects.js' %}"></script>
+</div>
+
+{% endblock %}

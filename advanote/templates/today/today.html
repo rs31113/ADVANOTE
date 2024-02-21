@@ -16,9 +16,9 @@
         {% else %}
         <p style="padding: 5px; color: #AEAEAE;">Количество задач на сегодня: {{ tasks_count }}</p>
         {% endif %}
-        <button class="add-task-btn">
+        <a class="add-task-btn">
             <img src="{% static 'img/add.png' %}" alt="Иконка"> Добавить задачу
-        </button>
+        </a>
         <div class="overlay" id="overlay"></div>
         <div class="task-container" style="height: 300px; overflow-y: scroll;">
         {% for task, status in tasks_with_status %}

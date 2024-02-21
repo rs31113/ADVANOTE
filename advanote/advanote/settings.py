@@ -64,7 +64,7 @@ TEMPLATES = [
         "OPTIONS": {
             "context_processors": [
                 "notes.context-processors.tasks_count",
-                "projects.context_processors.project_count_process",
+                "projects.context_processors.projects_count",
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",

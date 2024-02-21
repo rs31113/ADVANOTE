@@ -6,22 +6,27 @@ app_name = "projects"
 urlpatterns = [
     django.urls.path(
         "create/",
-        projects.views.CreateProject.as_view(),
+        projects.views.AddProject.as_view(),
         name="create",
     ),
     django.urls.path(
+        "delete_project/<int:project_id>/",
+        projects.views.DeleteProject.as_view(),
+        name="delete_project",
+    ),
+    django.urls.path(
         "",
-        projects.views.ProjectsListPage.as_view(),
+        projects.views.ProjectsList.as_view(),
         name="page",
     ),
     django.urls.path(
-        "edite/<int:project_id>/",
-        projects.views.ProjectEditPage.as_view(),
-        name="project_edite",
+        "edit/<int:project_id>/",
+        projects.views.EditProject.as_view(),
+        name="project_edit",
     ),
     django.urls.path(
         "<int:pk>/",
-        projects.views.ProjectDetail.as_view(),
+        projects.views.ProjectDetails.as_view(),
         name="project_detail",
     ),
     django.urls.path(

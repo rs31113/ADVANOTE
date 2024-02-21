@@ -1,13 +1,14 @@
 import projects.models
 
 
-def project_count_process(request):
+def projects_count(request):
     if request.user.is_authenticated:
-        project_count = projects.models.Project.objects.get_all_user_projects(
+        projects_count = projects.models.Project.objects.get_all_user_projects(
             request.user,
         ).count()
-        return {"project_count": project_count}
-    return {}
+    else:
+        projects_count = 0
+    return {"projects_count": projects_count}
 
 
 __all__ = ()
