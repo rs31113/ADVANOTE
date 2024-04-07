@@ -1,1 +1,1 @@
-web: gunicorn advanote.wsgi --log-file -
+web: gunicorn advanote.advanote.wsgi --log-file -
