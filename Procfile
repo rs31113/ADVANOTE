@@ -1,1 +1,1 @@
-web: gunicorn 'advanote.wsgi'
+web: gunicorn advanote.wsgi
