@@ -10,7 +10,7 @@ env = environ.Env(
         str,
         "django-insecure-f1zq2#vxjbqe8%6c^$rh*s6wk31k6%hnw7$4*g@b99@3qo*4mw",
     ),
-    DJANGO_ALLOWED_HOSTS=(list, [".localhost", "127.0.0.1"]),
+    DJANGO_ALLOWED_HOSTS=(list, ["*"]),
     DJANGO_STATIC_URL=(str, "/static/"),
     DEFAULT_USER_IS_ACTIVE=(bool, False),
     MAX_AUTH_ATTEMPTS=(int, 3),
