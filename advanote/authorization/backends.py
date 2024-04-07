@@ -46,7 +46,7 @@ class AuthorizationBackend(
         django.core.mail.send_mail(
             subject_mail,
             message,
-            advanote.settings.DJANGO_MAIL,
+            advanote.settings.EMAIL_HOST_USER,
             [user.email],
             fail_silently=False,
         )

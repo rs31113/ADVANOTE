@@ -48,7 +48,7 @@ class Signup(django.views.generic.FormView):
         django.core.mail.send_mail(
             subject_mail,
             message,
-            advanote.settings.DJANGO_MAIL,
+            advanote.settings.EMAIL_HOST_USER,
             [email],
             fail_silently=False,
         )
