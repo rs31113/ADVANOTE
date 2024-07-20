@@ -4,6 +4,8 @@
 
 This project aims to develop a collaborative web application for advanced note-taking, facilitating seamless sharing and editing of notes among teams. The application is designed to empower users to create, edit, and collaboratively utilize notes, fostering team efficiency, productivity, and streamlined information exchange.
 
+This project was specially developed for the Yandex Academy Lyceum specialization in "Web Development with Django".
+
 ## Getting Started
 
 To start working on the project, you'll need to download the project files. 
