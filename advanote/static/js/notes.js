@@ -1,30 +1,40 @@
 function fetchNotes() {
-    fetch('/notes/get_notes/')
-        .then(response => response.json())
-        .then(data => {
-            var dropdown = document.getElementById("notesDropdown");
-            dropdown.innerHTML = "";
+            const docsIconUrl = document.getElementById('docsIconUrl').getAttribute('data-url');
+            fetch('/notes/get_notes/')
+                .then(response => response.json())
+                .then(data => {
+                    var dropdown = document.getElementById("notesDropdown");
+                    dropdown.innerHTML = "";
 
-            if (data.length === 0) {
-                dropdown.innerHTML = '<a style="cursor: default">Нет заметок</a>';
-            } else {
-                data.forEach(note => {
-                    var noteLink = document.createElement("a");
-                    noteLink.href = `/notes/${note.id}/`;
+                    if (data.length === 0) {
+                        dropdown.innerHTML = '<a style="cursor: default">No notes</a>';
+                    } else {
+                        data.forEach(note => {
+                            var noteLink = document.createElement("a");
+                            noteLink.href = `/notes/${note.id}/`;
+                            noteLink.classList.add('note-link');
 
-                    var noteTitle = document.createElement("span");
-                    noteTitle.textContent = note.title;
-                    noteTitle.classList.add('note-title');
-                    noteLink.appendChild(noteTitle);
+                            var noteIcon = document.createElement("img");
+                            noteIcon.src = docsIconUrl;
+                            noteIcon.alt = "docs icon";
+                            noteIcon.classList.add('note-icon');
 
-                    dropdown.appendChild(noteLink);
+                            var noteTitle = document.createElement("span");
+                            noteTitle.textContent = note.title;
+                            noteTitle.classList.add('note-title');
+
+                            noteLink.appendChild(noteIcon);
+                            noteLink.appendChild(noteTitle);
+
+                            dropdown.appendChild(noteLink);
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Ошибка:', error);
                 });
-            }
-        })
-        .catch(error => {
-            console.error('Ошибка:', error);
-        });
-}
+        }
+
 
 function deleteNote() {
     const noteId = window.location.pathname.split('/').filter(Boolean).pop();

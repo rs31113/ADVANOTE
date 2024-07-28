@@ -10,14 +10,14 @@
 </head>
 <body>
     <div class="tasks">
-        <h1 style="font-family: Calibri, sans-serif;">Сегодня</h1>
+        <h1 style="font-weight: bold;">Today</h1>
         {% if tasks_count == 0 %}
-            <p style="padding: 5px; color: #AEAEAE; font-family: Calibri, sans-serif;">Нет задач на сегодня.</p>
+            <p style="padding: 5px; color: #AEAEAE;">No tasks for today.</p>
         {% else %}
-        <p style="padding: 5px; color: #AEAEAE;">Количество задач на сегодня: {{ tasks_count }}</p>
+        <p style="padding: 5px; color: #AEAEAE;">Tasks for today: {{ tasks_count }}</p>
         {% endif %}
         <a class="add-task-btn">
-            <img src="{% static 'img/add.png' %}" alt="Иконка"> Добавить задачу
+            <img src="{% static 'img/add.png' %}" alt="Иконка"> New task
         </a>
         <div class="overlay" id="overlay"></div>
         <div class="task-container" style="height: 300px; overflow-y: scroll;">

@@ -5,7 +5,6 @@
 {% block content %}
 <head>
     <meta charset="UTF-8">
-    <title>Заметки</title>
     <link href="{% static 'css/tasks-styles.css' %}" rel="stylesheet">
     <link href="{% static 'css/notes.css' %}" rel="stylesheet">
 </head>
@@ -14,9 +13,9 @@
 {% if selected_note %}
 <header>
     <div class="header-content">
-        <p style="font-style: italic; opacity: 0.7; margin-left: 10px;">заметки / {{ selected_note.title }}</p>
-        <img src="{% static 'img/delete.png' %}" class="delete-note-icon" alt="Удалить" onclick="deleteNote()">
+        <p style="font-style: italic; opacity: 0.7; margin-left: 10px;">notes / {{ selected_note.title }}</p>
     </div>
+    <img src="{% static 'img/delete.png' %}" class="delete-note-icon" alt="Удалить" onclick="deleteNote()">
 </header>
 <div class="overlay" id="overlay"></div>
 <div class="container">

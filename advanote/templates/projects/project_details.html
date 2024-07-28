@@ -6,61 +6,55 @@
     <script src="{% static 'js/tasks.js' %}"></script>
     <link href="/static/css/tasks-styles.css" rel="stylesheet">
     <div class="overlay" id="overlay"></div>
-    <h1>{{ project.name }}</h1>
+    <h1 style="margin-bottom: 20px;">{{ project.name }}</h1>
     <table class="table table-th-block">
         <tbody>
         <tr>
-            <td class="active">Создатель проекта:</td>
+            <td class="active">Creator:</td>
             <td>{{ project.owner.username }}</td>
         </tr>
         <tr>
-            <td class="active">Описание проекта:</td>
+            <td class="active">Description:</td>
             <td>
-                <div class="scroll-block">
-                    {{ project.description }}
-                </div>
+                {{ project.description }}
             </td>
         </tr>
         <tr>
-            <td class="active">Задачи проекта:</td>
+            <td class="active">Tasks:</td>
             <td>
-                <div class="scroll-block">
-                    {% for task in project.task.all %}
-                    <div class="task" data-task-id="{{ task.id }}">{{ task.title }}</div>
-                    {% endfor %}
-                </div>
+                {% for task in project.task.all %}
+                <div class="task" data-task-id="{{ task.id }}">{{ task.title }}</div>
+                {% endfor %}
             </td>
         </tr>
         <tr>
-            <td class="active">Заметки проекта:</td>
+            <td class="active">Notes:</td>
             <td>
-                <div class="scroll-block">
-                    {% for note in project.note.all %}
-                    <p><a href="">{{ note.title }}</a></p>
-                    {% endfor %}
-                </div>
+                {% for note in project.note.all %}
+                <div class="task" data-note-id="{{ note.id }}">{{ note.title }}</div>
+                {% endfor %}
             </td>
         </tr>
         <tr>
-            <td class="active">Участники проекта:</td>
+            <td class="active">Members:</td>
             <td>
-                <div class="scroll-block">
-                    {% for member in project.members.all %}
-                    <p>{{ member.username }}</p>
-                    {% endfor %}
-                </div>
+                {% for member in project.members.all %}
+                <p>{{ member.username }}</p>
+                {% endfor %}
             </td>
         </tr>
         {% if project.invite_link and project.owner == user %}
         <tr>
-            <td class="active">Пригласительная ссылка:</td>
+            <td class="active">Invitation link:</td>
             <td>{{ request.scheme }}://{{ request.META.HTTP_HOST }}{% url 'projects:invite_link' pk=project.id invite_code=project.invite_link %}</td>
         </tr>
         {% endif %}
         </tbody>
     </table>
     {% if project.owner == user %}
-    <a href="{% url 'projects:create_invite' project.id %}" class="custom-btn btn-16">{% if project.invite_link %} Новая пригласительная ссылка {% else %} Создать пригласительную ссылку {% endif %}</a>
+    <a href="{% url 'projects:create_invite' project.id %}" style="text-decoration: none;">
+        <button type="submit" class="btn btn-primary btn-block button">New invitation link</button>
+    </a>
     {% endif %}
 </div>
 {% endblock %}

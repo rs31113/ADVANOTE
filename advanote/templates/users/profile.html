@@ -5,7 +5,6 @@
 {% block content %}
 <head>
     <meta charset="UTF-8">
-    <title>Профиль</title>
     <link href="{% static 'css/tasks-styles.css' %}" rel="stylesheet">
 </head>
 <body>
@@ -13,7 +12,7 @@
 <div class="container">
     <form method="post" action="{% url 'authorization:profile' %}">
     {% csrf_token %}
-        <h4 style="text-align: center;">Персональные данные</h4>
+        <h4 style="text-align: center;">Personal data</h4>
     <table class="table table-th-block" style="margin-top: 20px;">
         <tbody>
         <tr>
@@ -30,7 +29,7 @@
         </tr>
         </tbody>
     </table>
-    <h4 style="text-align: center; margin-top: 40px;">Безопасность</h4>
+    <h4 style="text-align: center; margin-top: 40px;">Security</h4>
     <table class="table table-th-block" style="margin-top: 20px;">
         <tbody>
         <tr>
@@ -45,12 +44,14 @@
         </tbody>
     </table>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block button">Сохранить</button>
+        <button type="submit" class="btn btn-primary btn-block button">Save</button>
     </div>
     <input type="hidden" name="next" value="{{ next }}">
     </form>
     <div class="form-group">
-        <a href="{% url 'authorization:logout' %}" class="btn btn-primary btn-block button">Выйти из аккаунта</a>
+        <a href="{% url 'authorization:logout' %}" style="text-decoration: none;">
+            <button class="btn btn-primary btn-block button">Log out</button>
+        </a>
     </div>
 </div>
     <script src="{% static 'js/notes.js' %}"></script>

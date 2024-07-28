@@ -8,9 +8,9 @@ import tasks.manager
 class Task(core.models.AbstractEntityModel):
     objects = tasks.manager.TasksManager()
     POINT_CHOICES = [
-        (1, "Главный"),
-        (2, "Средний"),
-        (3, "Неважный"),
+        (1, "High"),
+        (2, "Medium"),
+        (3, "Low"),
     ]
     title = django.db.models.TextField(
         max_length=150,

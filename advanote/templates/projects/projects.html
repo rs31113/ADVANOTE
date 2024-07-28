@@ -4,18 +4,17 @@
 {% load static %}
 <head>
     <meta charset="UTF-8">
-    <title>Сегодня</title>
     <link href="{% static 'css/tasks-styles.css' %}" rel="stylesheet">
 </head>
 <div class="tasks">
-    <h1>Проекты</h1>
+    <h1 style="font-weight: bold;">Projects</h1>
     {% if projects_count == 0 %}
-        <p style="padding: 5px; color: #AEAEAE;">Нет проектов.</p>
+        <p style="padding: 5px; color: #AEAEAE;">No projects.</p>
     {% else %}
-    <p style="padding: 5px; color: #AEAEAE;">Количество проектов: {{ projects_count }}</p>
+    <p style="padding: 5px; color: #AEAEAE;">Number of projects: {{ projects_count }}</p>
     {% endif %}
     <a class="add-task-btn" href="{% url 'projects:create' %}">
-        <img src="{% static 'img/add.png' %}" alt="Иконка"> Добавить проект
+        <img src="{% static 'img/add.png' %}" alt="Иконка"> New project
     </a>
     <div class="overlay" id="overlay"></div>
         <div class="task-container">

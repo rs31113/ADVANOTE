@@ -10,8 +10,9 @@ env = environ.Env(
         str,
         "django-insecure-f1zq2#vxjbqe8%6c^$rh*s6wk31k6%hnw7$4*g@b99@3qo*4mw",
     ),
-    DJANGO_ALLOWED_HOSTS=(list, ["*"]),
+    DJANGO_ALLOWED_HOSTS=(list, [".localhost", "127.0.0.1"]),
     DJANGO_STATIC_URL=(str, "/static/"),
+    DJANGO_MAIL=(str, "catsshop@yandex.ru"),
     DEFAULT_USER_IS_ACTIVE=(bool, False),
     MAX_AUTH_ATTEMPTS=(int, 3),
 )
@@ -130,15 +131,12 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = "mail.test1235143.ru"
-EMAIL_USE_TLS = True
-EMAIL_PORT = 465
-EMAIL_HOST_USER = "mytestpostaddress@test1235143.ru"
-EMAIL_HOST_PASSWORD = "Notorious21052200"
+DJANGO_MAIL = env("DJANGO_MAIL")
 
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 
 EMAIL_FILE_PATH = BASE_DIR / "send_mail"
+
 
 LOGIN_URL = "/"
 

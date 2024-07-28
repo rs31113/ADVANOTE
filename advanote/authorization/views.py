@@ -48,7 +48,7 @@ class Signup(django.views.generic.FormView):
         django.core.mail.send_mail(
             subject_mail,
             message,
-            advanote.settings.EMAIL_HOST_USER,
+            advanote.settings.DJANGO_MAIL,
             [email],
             fail_silently=False,
         )
@@ -66,7 +66,7 @@ class Signup(django.views.generic.FormView):
         self.activate_email(user, form.cleaned_data.get("email"))
         django.contrib.messages.success(
             self.request,
-            "Спасибо за регистрацию, проверьте почту!",
+            "Thank you for signing up, please check your email!",
         )
         return super().form_valid(form)
 
@@ -102,14 +102,14 @@ class ConfirmEmail(django.views.generic.View):
             user.profile.save()
             django.contrib.messages.success(
                 request,
-                "Спасибо за подтверждение почты!"
-                " Теперь можете войти в аккаунт!",
+                "Thank you for confirming your email!"
+                "Now you can log in to your account!",
             )
             return django.shortcuts.redirect("authorization:login")
 
         django.contrib.messages.error(
             request,
-            "Ссылка активации не действительна!",
+            "The activation link is no longer valid!",
         )
         return django.shortcuts.redirect("authorization:login")
 

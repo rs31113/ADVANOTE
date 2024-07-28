@@ -19,6 +19,18 @@ class ProjectCreateForm(django.forms.ModelForm):
 
     def __init__(self, request, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.fields["name"].widget.attrs.update(
+            {
+                "class": "form-control",
+                "placeholder": "title",
+            },
+        )
+        self.fields["description"].widget.attrs.update(
+            {
+                "class": "form-control",
+                "placeholder": "description",
+            },
+        )
         self.fields[
             "task"
         ].queryset = tasks.models.Task.objects.get_user_tasks(
@@ -41,6 +53,7 @@ class ProjectCreateForm(django.forms.ModelForm):
 
 
 class ProjectPageEditForm(django.forms.ModelForm):
+
     task = django.forms.ModelMultipleChoiceField(
         queryset=None,
         widget=django.forms.CheckboxSelectMultiple(),
@@ -59,6 +72,18 @@ class ProjectPageEditForm(django.forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.fields["name"].widget.attrs.update(
+            {
+                "class": "form-control",
+                "placeholder": "title",
+            },
+        )
+        self.fields["description"].widget.attrs.update(
+            {
+                "class": "form-control",
+                "placeholder": "description",
+            },
+        )
         self.fields["task"].queryset = self.instance.task
         self.fields["note"].queryset = self.instance.note
         self.fields["members"].queryset = self.instance.members

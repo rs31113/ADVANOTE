@@ -14,25 +14,25 @@ class SingUpForm(django.contrib.auth.forms.UserCreationForm):
         self.fields["username"].widget.attrs.update(
             {
                 "class": "form-control",
-                "placeholder": "Имя пользователя",
+                "placeholder": "username",
             },
         )
         self.fields["email"].widget.attrs.update(
             {
                 "class": "form-control",
-                "placeholder": "Email",
+                "placeholder": "e-mail",
             },
         )
         self.fields["password1"].widget.attrs.update(
             {
                 "class": "form-control",
-                "placeholder": "Пароль",
+                "placeholder": "password",
             },
         )
         self.fields["password2"].widget.attrs.update(
             {
                 "class": "form-control",
-                "placeholder": "Повторите пароль",
+                "placeholder": "repeat password",
             },
         )
 
@@ -53,13 +53,13 @@ class LogInForm(django.contrib.auth.forms.AuthenticationForm):
         self.fields["username"].widget.attrs.update(
             {
                 "class": "form-control",
-                "placeholder": "Логин",
+                "placeholder": "username",
             },
         )
         self.fields["password"].widget.attrs.update(
             {
                 "class": "form-control",
-                "placeholder": "Пароль",
+                "placeholder": "password",
             },
         )
 
@@ -89,19 +89,19 @@ class UserChangeForm(django.contrib.auth.forms.UserChangeForm):
         self.fields["username"].widget.attrs.update(
             {
                 "class": "form-control",
-                "placeholder": "Логин",
+                "placeholder": "username",
             },
         )
         self.fields["first_name"].widget.attrs.update(
             {
                 "class": "form-control",
-                "placeholder": "Имя",
+                "placeholder": "name",
             },
         )
         self.fields["last_name"].widget.attrs.update(
             {
                 "class": "form-control",
-                "placeholder": "Фамилия",
+                "placeholder": "surname",
             },
         )
 
@@ -122,7 +122,7 @@ class PasswordChangeForm(django.contrib.auth.forms.PasswordChangeForm):
                 "autocomplete": "current-password",
                 "autofocus": True,
                 "class": "form-control",
-                "placeholder": "Старый пароль",
+                "placeholder": "old password",
             },
         ),
         required=False,
@@ -132,7 +132,7 @@ class PasswordChangeForm(django.contrib.auth.forms.PasswordChangeForm):
             attrs={
                 "autocomplete": "new-password",
                 "class": "form-control",
-                "placeholder": "Новый пароль",
+                "placeholder": "new password",
             },
         ),
         strip=False,
@@ -145,7 +145,7 @@ class PasswordChangeForm(django.contrib.auth.forms.PasswordChangeForm):
             attrs={
                 "autocomplete": "new-password",
                 "class": "form-control",
-                "placeholder": "Повторите новый пароль",
+                "placeholder": "repeat new password",
             },
         ),
         required=False,

@@ -1,3 +1,7 @@
+body {
+    font-family: JetBrains Mono, monospace;
+}
+
 .modal-form {
     width: 500px;
     max-height: 80vh;
@@ -16,7 +20,7 @@
 
 .form-group label {
     display: block;
-    font-family: Calibri, sans-serif;
+    font-family: JetBrains Mono, monospace;
     font-weight: bold;
     margin-bottom: 5px;
 }
@@ -27,7 +31,7 @@
 
 .form-group input[type="text"] {
     font-size: 20px;
-    font-family: Calibri, sans-serif;
+    font-family: JetBrains Mono, monospace;
     border: none;
     resize: vertical;
     width: 100%;
@@ -163,26 +167,13 @@
     opacity: 1;
 }
 
-.add-task-btn {
-    transition: color 0.3s ease-in-out;
-    color: black;
-}
-
-.add-task-btn:hover {
-    color: #7DACF8;
-    text-decoration: none;
-}
-
-.add-task-btn:focus {
-    outline: none;
-}
 
 .circle {
     display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 1px solid #000;
-    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    border: 2px solid black;
+    border-radius: 30%;
     background-color: transparent;
     cursor: pointer;
     margin-right: 10px;
@@ -202,16 +193,14 @@
 .add-note-btn {
     width: 13px;
     height: 13px;
-    border-radius: 3px;
     padding: 1px;
     position: absolute;
     top: 50%;
-    left: 25%;
-    transition: background-color 0.3s ease-in-out;
+    left: 100px;
 }
 
 .add-note-btn:hover {
-    background-color: #D1D1D1;
+    cursor: pointer;
 }
 
 .add-note-btn:focus {
@@ -219,17 +208,15 @@
 }
 
 .arrow-icon {
-    border-radius: 3px;
     width: 16px;
     height: 16px;
     position: absolute;
-    left: 25%;
+    left: 100px;
     top: 50%;
-    transition: background-color 0.3s ease-in-out;
 }
 
 .arrow-icon:hover {
-    background-color: #D1D1D1;
+    cursor: pointer;
 }
 
 .arrow-icon:focus {
@@ -241,7 +228,7 @@
 }
 
 #note-form {
-    height: 400px;
+    height: 70%;
 }
 
 .note-text {

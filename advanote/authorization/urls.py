@@ -48,9 +48,7 @@ urlpatterns = [
     ),
     django.urls.path(
         "logout/",
-        django.contrib.auth.views.LogoutView.as_view(
-            template_name="authorization/reset_done.html",
-        ),
+        authorization.views.Login.as_view(),
         name="logout",
     ),
 ]

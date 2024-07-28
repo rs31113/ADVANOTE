@@ -9,10 +9,10 @@ class NoteForm(django.forms.ModelForm):
         fields = ["title", "text", "tags"]
         widgets = {
             "title": django.forms.TextInput(
-                attrs={"placeholder": "Заголовок"},
+                attrs={"placeholder": "Title"},
             ),
             "text": django.forms.Textarea(
-                attrs={"placeholder": "Текст"},
+                attrs={"placeholder": "Text"},
             ),
         }
 

@@ -12,30 +12,27 @@
         <table class="table table-th-block">
             <tbody>
             <tr>
-                <td class="active">Название проекта:</td>
+                <td class="active">Creator: {{ project.owner }}</td>
+            </tr>
+            <tr>
                 <td>{{ form.name }}</td>
             </tr>
             <tr>
-                <td class="active">Описание проекта:</td>
                 <td>{{ form.description }}</td>
             </tr>
             <tr>
-                <td class="active">Задачи проекта:</td>
                 <td class="scroll-bar">{{ form.task }}</td>
             </tr>
             <tr>
-                <td class="active">Заметки проекта:</td>
                 <td class="scroll-bar">{{ form.note }}</td>
             </tr>
             <tr>
-                <td class="active">Участники проекта:</td>
                 <td class="scroll-bar">{{ form.members }}</td>
             </tr>
             </tbody>
-            <p>Создатель: {{ project.owner }}</p>
         </table>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block button">Сохранить</button>
+            <button type="submit" class="btn btn-primary btn-block button">Save</button>
         </div>
         <input type="hidden" name="next" value="{{ next }}">
     </form>

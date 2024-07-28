@@ -5,7 +5,6 @@
 {% block content %}
 <head>
     <meta charset="UTF-8">
-    <title>Заметки</title>
     <link href="{% static 'css/tasks-styles.css' %}" rel="stylesheet">
     <link href="{% static 'css/notes.css' %}" rel="stylesheet">
 </head>
@@ -13,15 +12,15 @@
 
 <header>
     <div class="hello-header">
-        <p style="font-style: italic; opacity: 0.7; margin-left: 10px;">заметки / </p>
+        <p style="font-style: italic; opacity: 0.7; margin-left: 10px;">notes / </p>
     </div>
 </header>
 <div class="overlay" id="overlay"></div>
 <div class="container">
-    <h1 style="font-family: Calibri, sans-serif; font-weight: bold;">Заметки</h1>
-    <p style="font-family: Calibri, sans-serif; margin-top: 20px; font-style: italic">Чтобы добавить заметку, нажмите на "+" в меню</p>
-    <p style="font-family: Calibri, sans-serif; margin-top: 10px; font-style: italic">Чтобы сохранить новую заметку, нажмите клавишу "Enter" в заголовке всплывающего окна</p>
-    <p style="font-family: Calibri, sans-serif; margin-top: 10px; font-style: italic">Для редактирования заметок доступно автосохранение</p>
+    <h1 style="font-family: JetBrains Mono, monospace; font-weight: bold;">Notes</h1>
+    <p style="font-family: JetBrains Mono, monospace; margin-top: 20px; font-style: italic">To create a note, click on the "+" in the menu</p>
+    <p style="font-family: JetBrains Mono, monospace; margin-top: 10px; font-style: italic">To save a new note, press the "Enter" key in the title field of the popup window</p>
+    <p style="font-family: JetBrains Mono, monospace; margin-top: 10px; font-style: italic">Auto-save is available for editing notes</p>
 
 </div>
 <script src="{% static 'js/notes.js' %}"></script>

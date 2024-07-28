@@ -1,3 +1,11 @@
+body {
+    font-family: JetBrains Mono, monospace;
+}
+
+.content {
+    margin-left: 250px;
+}
+
 #note-form {
     height: 100%;
 }
@@ -16,13 +24,11 @@
     min-height: 100%;
     width: 100%;
     margin-top: 10px;
-    font-family: Calibri, sans-serif;
 }
 
 .form-group input[type="text"] {
     font-size: 30px;
     font-weight: bold;
-    font-family: Calibri, sans-serif;
     color: #333;
 }
 
@@ -30,10 +36,11 @@
 .delete-note-icon {
     width: 16px;
     height: 16px;
-    position: absolute;
+    position: fixed;
     transform: translateX(-50%);
     cursor: pointer;
-    right: -500px;
+    right: 15px;
+    top: 15px;
 }
 
 

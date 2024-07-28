@@ -9,10 +9,10 @@ class TaskForm(django.forms.ModelForm):
         fields = ["title", "text", "tags", "priority"]
         widgets = {
             "title": django.forms.TextInput(
-                attrs={"placeholder": "Заголовок"},
+                attrs={"placeholder": "Title"},
             ),
             "text": django.forms.Textarea(
-                attrs={"placeholder": "Описание"},
+                attrs={"placeholder": "Description"},
             ),
         }
 

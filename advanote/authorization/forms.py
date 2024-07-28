@@ -7,7 +7,7 @@ class ResetPasswordForm(django.contrib.auth.forms.PasswordResetForm):
         self.fields["email"].widget.attrs.update(
             {
                 "class": "form-control",
-                "placeholder": "Почта",
+                "placeholder": "e-mail",
             },
         )
 
@@ -18,13 +18,13 @@ class SetPasswordForm(django.contrib.auth.forms.SetPasswordForm):
         self.fields["new_password1"].widget.attrs.update(
             {
                 "class": "form-control",
-                "placeholder": "Новый пароль",
+                "placeholder": "new password",
             },
         )
         self.fields["new_password2"].widget.attrs.update(
             {
                 "class": "form-control",
-                "placeholder": "Повторите пароль",
+                "placeholder": "repeat password",
             },
         )
 
