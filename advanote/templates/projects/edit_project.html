@@ -6,7 +6,7 @@
     <link href="{% static 'css/notes.css' %}" rel="stylesheet">
 </head>
 <div class="container">
-    <h1>{{ project.name }}</h1>
+    <h1 style="text-align: center;">{{ project.name }}</h1>
     <form method="post">
         {% csrf_token %}
         <table class="table table-th-block">
