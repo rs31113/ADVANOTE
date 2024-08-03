@@ -167,7 +167,6 @@ body {
     opacity: 1;
 }
 
-
 .circle {
     display: inline-block;
     width: 22px;
@@ -233,4 +232,42 @@ body {
 
 .note-text {
     height: 100%;
+}
+
+.note-link {
+    color: black !important;
+    text-decoration: none !important;
+    transition: color 0.3s !important;
+}
+
+.note-link:hover {
+    color: gray !important;
+}
+
+.project-task {
+    transition: color 0.3s !important;
+    cursor: pointer;
+    margin-bottom: 0px !important;
+    padding: 0px !important;
+    position: relative;
+    border: none;
+    font-size: 16px;
+    height: 20px;
+    display: flex;
+    align-items: left;
+    padding-bottom: 0px;
+}
+
+.project-task:hover {
+    color: gray !important;
+}
+
+.project-task::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0px;
+    background-color: #ccc;
 }
