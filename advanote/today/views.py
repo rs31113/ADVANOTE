@@ -12,7 +12,9 @@ class Today(
     template_name = "today/today.html"
 
     def get(self, request, *args, **kwargs):
-        tasks_list = tasks.models.Task.objects.all()
+        tasks_list = tasks.models.Task.objects.filter(
+            owner=request.user,
+        )
         tasks_count = tasks_list.count()
         tasks_with_status = [(task, task.is_done) for task in tasks_list]
         return render(
