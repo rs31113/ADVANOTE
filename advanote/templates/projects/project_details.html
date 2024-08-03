@@ -4,9 +4,10 @@
 {% load static %}
 <div class="container">
     <script src="{% static 'js/tasks.js' %}"></script>
+    <script src="{% static 'js/notes.js' %}"></script>
     <link href="/static/css/tasks-styles.css" rel="stylesheet">
     <div class="overlay" id="overlay"></div>
-    <h1 style="margin-bottom: 20px;">{{ project.name }}</h1>
+    <h1 style="margin-bottom: 20px; text-align: center">{{ project.name }}</h1>
     <table class="table table-th-block">
         <tbody>
         <tr>
@@ -23,7 +24,7 @@
             <td class="active">Tasks:</td>
             <td>
                 {% for task in project.task.all %}
-                <div class="task" data-task-id="{{ task.id }}">{{ task.title }}</div>
+                <a class="task project-task" data-task-id="{{ task.id }}">{{ task.title }}</a>
                 {% endfor %}
             </td>
         </tr>
@@ -31,13 +32,14 @@
             <td class="active">Notes:</td>
             <td>
                 {% for note in project.note.all %}
-                <div class="task" data-note-id="{{ note.id }}">{{ note.title }}</div>
+                <a class="note-link" href="/notes/{{ note.id }}/">{{ note.title }}</a>
                 {% endfor %}
             </td>
         </tr>
         <tr>
             <td class="active">Members:</td>
             <td>
+                <p>{{ project.owner.username }}</p>
                 {% for member in project.members.all %}
                 <p>{{ member.username }}</p>
                 {% endfor %}
@@ -53,7 +55,7 @@
     </table>
     {% if project.owner == user %}
     <a href="{% url 'projects:create_invite' project.id %}" style="text-decoration: none;">
-        <button type="submit" class="btn btn-primary btn-block button">New invitation link</button>
+        <button type="submit" class="btn btn-primary btn-block button">Generate new link</button>
     </a>
     {% endif %}
 </div>
