@@ -53,7 +53,6 @@ class ProjectCreateForm(django.forms.ModelForm):
 
 
 class ProjectPageEditForm(django.forms.ModelForm):
-
     task = django.forms.ModelMultipleChoiceField(
         queryset=None,
         widget=django.forms.CheckboxSelectMultiple(),
