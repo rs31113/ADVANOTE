@@ -118,7 +118,9 @@ class DeleteProject(
     def delete(self, request, project_id):
         project = get_object_or_404(projects.models.Project, id=project_id)
         project.delete()
-        return django.http.JsonResponse({"message": "Project deleted successfully"})
+        return django.http.JsonResponse(
+            {"message": "Project deleted successfully"}
+        )
 
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
