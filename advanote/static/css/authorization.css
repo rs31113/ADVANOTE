@@ -1,9 +1,10 @@
 .login-form,
 .reset-form {
-    width: 40%;
+    width: 50%;
     height: 50%;
+    min-width: 300px;
     margin: auto;
-    margin-top: 150px;
+    margin-top: 130px;
     margin-bottom: 100px;
     background-color: white;
     align-items: center;
@@ -28,8 +29,9 @@
 }
 
 .signup-form {
-    width: 40%;
+    width: 50%;
     height: 50%;
+    min-width: 300px;
     margin: auto;
     margin-top: 100px;
     margin-bottom: 100px;
@@ -61,6 +63,7 @@
 .logo {
     display: block;
     margin: auto;
+    margin-bottom: 20px;
     width: 64px;
     height: 64px;
 }
