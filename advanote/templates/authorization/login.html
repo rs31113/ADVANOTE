@@ -18,8 +18,8 @@
     <div class="container">
         <form class="login-form" method="post" action="{% url 'authorization:login' %}">
             {% csrf_token %}
-
-            <h2 class="text-center" style="margin-bottom: 50px;">Log in</h2>
+            <img src="{% static 'img/logo.png' %}" class="logo">
+            <h2 class="text-center" style="margin-bottom: 30px;">Log in</h2>
 
                 {% if form.errors %}
             <p class="text-center" style="font-size: 15px; color: #CD2A08;">Invalid username or password</p>
